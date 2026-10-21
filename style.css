@@ -1,4 +1,7 @@
 body {
+  background-image: url("img/sfondo.jpg");
+  background-size: cover;
+  background-attachment: fixed;
   background: lightblue;
   font-family: Arial, sans-serif;
   text-align: center;
