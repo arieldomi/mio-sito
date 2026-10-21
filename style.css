@@ -68,11 +68,25 @@ h2 {
   color: orange;
 }
 
-nav a { transition: transform 0.3s; }
-nav a:hover { transform: scale(1.15); }
+nav a { 
+  transition: transform 0.3s; 
+}
+
+nav a:hover { 
+  transform: scale(1.15); 
+}
 
 @keyframes entra {
-  from { opacity: 0; transform: translateY(-20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { 
+    opacity: 0; 
+    transform: translateY(-20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
 }
-h1 { animation: entra 1s ease; }
+
+h1 { 
+  animation: entra 1s ease; 
+}
