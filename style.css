@@ -7,10 +7,16 @@ body {
   padding: 20px;
 }
 
-main { background: rgba(255,255,255,0.85); padding: 20px; border-radius: 12px; }
+main { 
+  background: rgba(255,255,255,0.85); 
+  padding: 20px; 
+  border-radius: 12px; 
+}
 
+/* Titolo principale in Verde chiaro acceso */
 h1 {
-  color: darkblue;
+  color: #00FF7F;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 .sotto {
@@ -24,19 +30,17 @@ h1 {
   padding: 20px;
   border-radius: 12px;
   text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Sottotitoli in Blu */
 h2 {
-  color: teal;
+  color: #0000FF;
 }
 
 .piede {
   font-size: 12px;
   color: gray;
-}
-
-.scheda {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .bottone {
@@ -58,12 +62,14 @@ h2 {
   padding: 10px;
   border-radius: 10px;
 }
+
 .menu a {
   color: white;
   text-decoration: none;
   font-weight: bold;
   margin: 0 12px;
 }
+
 .menu a:hover {
   color: orange;
 }
