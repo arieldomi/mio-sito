@@ -7,6 +7,8 @@ body {
   padding: 20px;
 }
 
+main { background: rgba(255,255,255,0.85); padding: 20px; border-radius: 12px; }
+
 h1 {
   color: darkblue;
 }
