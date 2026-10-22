@@ -52,7 +52,7 @@ h2 {
 }
 
 .bottone:hover {
-  background: orange;
+  background: red;
 }
 
 .menu {
@@ -69,7 +69,7 @@ h2 {
 }
 
 .menu a:hover {
-  color: orange;
+  color: darkred;
 }
 
 nav a { 
