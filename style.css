@@ -2,7 +2,7 @@ body {
   background-image: url("img/sfondo.jpg");
   background-size: cover;
   background-attachment: fixed;
-  font-family: Arial, sans-serif;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
   padding: 20px;
 }
