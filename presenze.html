@@ -111,6 +111,8 @@ th{font-size:16px;color:var(--mut)}td.n,th.n{text-align:right;white-space:nowrap
 <button class="btn" id="b-mod" type="button">Modifica (solo io)</button>
 <button class="btn sec" id="b-esci" type="button" hidden>Esci dalla modifica</button>
 <button class="btn sec" id="b-export" type="button">Scarica i dati (file)</button>
+<button class="btn sec" id="b-import" type="button" hidden>Carica file</button>
+<input id="f-import" type="file" accept=".json,application/json" hidden>
 <button class="btn sec" id="b-invia" type="button" hidden>Invia le modifiche in attesa</button>
 </div>
 <p class="msg" id="msg" role="status" aria-live="polite"></p>
@@ -375,14 +377,14 @@ function attiva(k, doc) {
   K = k; comeDocente = doc; $("pw1").value = ""; $("pw2").value = ""; $("dp").value = "";
   $("f-pw").hidden = true; $("f-doc").hidden = true;
   var b = $("modo"); b.textContent = doc ? "Modifica attiva (docente)" : "Modifica attiva"; b.className = "badge edit";
-  $("b-mod").hidden = true; $("b-docente").hidden = true; $("b-esci").hidden = false; $("s-fissi").hidden = false; $("s-doc").hidden = !doc;
+  $("b-mod").hidden = true; $("b-docente").hidden = true; $("b-esci").hidden = false; $("b-import").hidden = false; $("s-fissi").hidden = false; $("s-doc").hidden = !doc;
   $("az-testo").textContent = "Puoi cambiare i giorni. Premi un giorno del calendario.";
   msg("Accesso giusto.", "ok"); disegna();
 }
 function esci() {
   K = null; comeDocente = false; chiudi();
   var b = $("modo"); b.textContent = "Solo lettura"; b.className = "badge view";
-  $("b-mod").hidden = VIEWER; $("b-docente").hidden = false; $("b-esci").hidden = true; $("s-fissi").hidden = true; $("s-doc").hidden = true; $("f-pw").hidden = true; $("f-doc").hidden = true;
+  $("b-mod").hidden = VIEWER; $("b-docente").hidden = false; $("b-esci").hidden = true; $("b-import").hidden = true; $("s-fissi").hidden = true; $("s-doc").hidden = true; $("f-pw").hidden = true; $("f-doc").hidden = true;
   $("az-testo").textContent = VIEWER ? "Tutti possono leggere questa pagina. Solo lo stagista può cambiare i suoi giorni, dalla pagina del suo sito, con la sua password." : "Tutti possono leggere questa pagina. Solo lo stagista può cambiare i suoi giorni, con la sua password.";
   msg("", ""); disegna();
 }
@@ -424,6 +426,25 @@ document.addEventListener("DOMContentLoaded", function () {
   $("b-doc-ok").addEventListener("click", entraDocente); $("dp").addEventListener("keydown", function (e) { if (e.key === "Enter") entraDocente(); });
   $("b-doc-no").addEventListener("click", function () { $("f-doc").hidden = true; msg("", ""); });
   $("b-esci").addEventListener("click", esci); $("b-export").addEventListener("click", esporta); $("b-invia").addEventListener("click", inviaAttesa);
+  $("b-import").addEventListener("click", function () { $("f-import").click(); });
+  $("f-import").addEventListener("change", function (e) {
+    var file = e.target.files[0];
+    e.target.value = "";
+    if (!file) return;
+    var r = new FileReader();
+    r.onload = function () {
+      try {
+        var j = JSON.parse(r.result);
+        if (!j || !Array.isArray(j.giorni)) { msg("File non valido.", "ko"); return; }
+        if (j.allievo && j.allievo !== ALL && !confirm("Il file è di " + j.allievo + ", ma stai modificando " + ALL + ". Carico lo stesso?")) return;
+        var lista = j.giorni.filter(function (g) { return PER.indexOf(g.data) >= 0 && ["P", "A", "L", "N"].indexOf(g.stato) >= 0; })
+          .map(function (g) { return {d: g.data, s: g.stato, o: Number(g.ore) || 0, t: String(g.attivita || "").slice(0, 200)}; });
+        if (!lista.length) { msg("Nessun giorno valido trovato nel file.", "ko"); return; }
+        invia(lista).then(function (ok) { if (ok) msg("Caricati " + lista.length + " giorni dal file.", "ok"); });
+      } catch (err) { msg("Errore nella lettura del file JSON.", "ko"); }
+    };
+    r.readAsText(file);
+  });
   $("b-fissi").addEventListener("click", segnaFissi); $("b-reset").addEventListener("click", azzera);
   $("sh-salva").addEventListener("click", salvaGiorno); $("sh-vuoto").addEventListener("click", svuotaGiorno);
   $("sh-chiudi").addEventListener("click", chiudi); $("sh-chiudi2").addEventListener("click", chiudi);
