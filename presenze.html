@@ -2,66 +2,73 @@
 <html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><link rel="icon" href="data:,">
 <title>Presenze stage</title>
 <style>
-:root{--bg:#f6f7f9;--card:#fff;--ink:#14202b;--mut:#4a5968;--line:#cdd5dd;--acc:#0b57d0;--accd:#fff;--ok:#0a7a3d;--okbg:#c8f0d2;--ko:#a32020;--kobg:#f6c9c9;--pv:#8a5a00;--pvbg:#fde9b8;--nl:#e7eaee;--warn:#fff8e1;--warnl:#e6c96a}
-:root[data-theme="dark"]{--bg:#10161c;--card:#1a232c;--ink:#e8eef4;--mut:#a9b7c4;--line:#33424f;--acc:#8ab4f8;--accd:#10161c;--ok:#7fd69b;--okbg:#17402a;--ko:#ff9b9b;--kobg:#4a2222;--pv:#f2c66d;--pvbg:#4a3a12;--nl:#26313b;--warn:#3a3213;--warnl:#7a6a22}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10161c;--card:#1a232c;--ink:#e8eef4;--mut:#a9b7c4;--line:#33424f;--acc:#8ab4f8;--accd:#10161c;--ok:#7fd69b;--okbg:#17402a;--ko:#ff9b9b;--kobg:#4a2222;--pv:#f2c66d;--pvbg:#4a3a12;--nl:#26313b;--warn:#3a3213;--warnl:#7a6a22}}
+:root{--bg:#f4f6f9;--card:rgba(255,255,255,0.96);--ink:#14202b;--mut:#4a5968;--line:#cdd5dd;--acc:#00008b;--accd:#fff;--ok:#0a7a3d;--okbg:#c8f0d2;--ko:#a32020;--kobg:#f6c9c9;--pv:#8a5a00;--pvbg:#fde9b8;--nl:#e7eaee;--warn:#fff8e1;--warnl:#e6c96a}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;overflow-wrap:anywhere}
-main{max-width:760px;margin:0 auto;padding:14px 16px 60px}
-.menu{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
-.menu a{text-decoration:none;color:var(--acc);font-weight:700;padding:6px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);font-size:16px}
-.menu a:hover{border-color:var(--acc)}
-h1{font-size:28px;line-height:1.2;margin:8px 0 4px}
-h2{font-size:22px;margin:0 0 10px}
+body{margin:0;background-color:#14202b;background-image:url("img/sfondodo.avif");background-size:cover;background-position:center;background-attachment:fixed;color:var(--ink);font:18px/1.45 'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;overflow-wrap:anywhere}
+main{max-width:760px;margin:0 auto;padding:25px 16px 60px}
+.menu{background:#00FF7F;max-width:580px;margin:0 auto 30px auto;padding:12px 20px;border-radius:50px;box-shadow:0 4px 15px rgba(0,0,0,0.25);display:flex;justify-content:center;flex-wrap:wrap;gap:15px}
+.menu a{display:inline-block;color:black;text-decoration:none;font-weight:bold;font-size:15px;padding:4px 8px;transition:transform 0.25s ease,color 0.25s ease}
+.menu a:hover{color:red;transform:scale(1.12)}
+@keyframes entra{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+h1{color:#00FF7F;font-size:2.5rem;line-height:1.2;margin:8px 0 8px;text-align:center;text-shadow:2px 2px 6px rgba(0,0,0,0.85);animation:entra 0.8s ease-out}
+h2{color:#0000FF;font-size:1.35rem;margin:0 0 12px;padding-left:10px;border-left:4px solid #00FF7F}
 p{margin:6px 0}
 .sub,.small{color:var(--mut)}.small{font-size:15px}
-section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin:16px 0}
-.badge{display:inline-block;padding:4px 12px;border-radius:99px;font-weight:700;font-size:16px;border:2px solid var(--line)}
-.badge.view{border-color:var(--acc);color:var(--acc)}
+#chi,.top-status{text-align:center;color:white;text-shadow:1px 1px 4px rgba(0,0,0,0.9)}
+.top-status .small{color:white}
+.footer-note{background:rgba(255,255,255,0.9);color:#14202b;padding:10px 14px;border-radius:12px;text-align:center}
+section{background:var(--card);border:1px solid var(--line);border-top:6px solid #00FF7F;border-radius:16px;padding:20px;margin:20px 0;box-shadow:0 10px 25px rgba(0,0,0,0.3)}
+.badge{display:inline-block;padding:4px 12px;border-radius:99px;font-weight:700;font-size:15px;border:2px solid var(--line);background:var(--card);text-shadow:none}
+.badge.view{border-color:#00FF7F;color:#14202b}
 .badge.edit{border-color:var(--ok);color:var(--ok);background:var(--okbg)}
-.btn{min-height:52px;padding:10px 16px;border-radius:12px;border:2px solid var(--acc);background:var(--acc);color:var(--accd);font-weight:700;font-size:18px;line-height:1.2;font-family:inherit;cursor:pointer;touch-action:manipulation}
-.btn.sec{background:transparent;color:var(--acc)}
-.btn.ko{background:transparent;color:var(--ko);border-color:var(--ko)}
+.btn{min-height:48px;padding:10px 18px;border-radius:10px;border:2px solid var(--acc);background:var(--acc);color:var(--accd);font-weight:700;font-size:16px;line-height:1.2;font-family:inherit;cursor:pointer;touch-action:manipulation;box-shadow:0 3px 8px rgba(0,0,0,0.2);transition:background-color 0.25s ease,border-color 0.25s ease,transform 0.2s ease}
+.btn:hover:not(:disabled){background:red;border-color:red;color:white;transform:translateY(-2px)}
+.btn.sec{background:white;color:var(--acc);box-shadow:none}
+.btn.sec:hover:not(:disabled){background:red;border-color:red;color:white}
+.btn.ko{background:white;color:var(--ko);border-color:var(--ko);box-shadow:none}
+.btn.ko:hover:not(:disabled){background:var(--ko);color:white}
 .btn:disabled{opacity:.5;cursor:default}
 label{display:block;font-weight:700;margin:12px 0 4px}
-input,select,textarea{width:100%;min-height:52px;font:inherit;padding:8px 10px;border-radius:10px;border:2px solid var(--line);background:var(--bg);color:var(--ink)}
+input,select,textarea{width:100%;min-height:48px;font:inherit;padding:8px 10px;border-radius:10px;border:2px solid var(--line);background:var(--bg);color:var(--ink)}
 textarea{min-height:96px}
-input[type=checkbox]{width:28px;min-height:28px;height:28px;margin:0}
+input[type=checkbox]{width:26px;min-height:26px;height:26px;margin:0}
 .msg{min-height:26px;font-weight:700}.msg.ok{color:var(--ok)}.msg.ko{color:var(--ko)}
 .warn{background:var(--warn);border:1px solid var(--warnl);border-radius:10px;padding:10px 12px;margin:10px 0}
 .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
 [hidden]{display:none!important}
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 @media (min-width:600px){.cards{grid-template-columns:repeat(5,1fr)}}
-.card{border:2px solid var(--line);border-radius:12px;padding:8px;text-align:center}
-.card b{display:block;font-size:28px;line-height:1.1}.card span{font-size:15px;color:var(--mut)}
+.card{background:var(--bg);border:2px solid var(--line);border-left:3px solid #0000FF;border-radius:12px;padding:8px;text-align:center}
+.card b{display:block;font-size:28px;line-height:1.1;color:#00008b}.card span{font-size:14px;color:var(--mut)}
 table{width:100%;border-collapse:collapse;margin-top:10px}
 th,td{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left}
 th{font-size:16px;color:var(--mut)}td.n,th.n{text-align:right;white-space:nowrap}
-.mese{margin:14px 0 6px;font-size:20px}
+.mese{margin:16px 0 6px;font-size:19px;color:#00008b}
 .grid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
 .gh{text-align:center;font-size:14px;font-weight:700;color:var(--mut)}
 .d{min-height:62px;border-radius:10px;border:2px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;padding:2px;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.15;cursor:pointer;touch-action:manipulation}
+.d:hover{border-color:#0000FF}
 .d .dn{font-size:15px;font-weight:700}.d .sy{font-size:20px;font-weight:700}.d .ho{font-size:13px}
 .d.s-N{background:var(--nl);color:var(--mut)}
 .d.s-L{background:var(--pvbg);border-color:var(--pv);color:var(--pv)}
 .d.s-P{background:var(--okbg);border-color:var(--ok);color:var(--ok)}
 .d.s-A{background:var(--kobg);border-color:var(--ko);color:var(--ko)}
 .vuoto{visibility:hidden}
-.leg{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:15px}
+.leg{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:15px;margin-bottom:8px}
 .leg span b{display:inline-block;min-width:26px;text-align:center;border-radius:6px;border:2px solid var(--line);margin-right:4px}
-#sheet{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:flex-end;justify-content:center;z-index:10}
-#sheet .in{background:var(--card);width:100%;max-width:560px;max-height:92vh;overflow:auto;border-radius:18px 18px 0 0;padding:16px}
+#sheet{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:flex-end;justify-content:center;z-index:10}
+#sheet .in{background:#fff;border-top:6px solid #00FF7F;width:100%;max-width:560px;max-height:92vh;overflow:auto;border-radius:18px 18px 0 0;padding:20px}
 .sc{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.sc .btn{background:var(--bg);color:var(--ink);border-color:var(--line)}
+.sc .btn{background:var(--bg);color:var(--ink);border-color:var(--line);box-shadow:none}
+.sc .btn:hover{background:#e7eaee;color:var(--ink);border-color:var(--mut);transform:none}
 .sc .btn.on.N{background:var(--nl);border-color:var(--mut)}
 .sc .btn.on.L{background:var(--pvbg);border-color:var(--pv);color:var(--pv)}
 .sc .btn.on.P{background:var(--okbg);border-color:var(--ok);color:var(--ok)}
 .sc .btn.on.A{background:var(--kobg);border-color:var(--ko);color:var(--ko)}
 .days{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .days label{display:flex;align-items:center;gap:8px;margin:0;font-weight:400;min-height:48px}
-@media (max-width:520px){h1{font-size:24px}}
+@media (max-width:520px){h1{font-size:2rem}}
 </style></head><body><main>
 <nav class="menu">
   <a href="index.html">Chi sono</a>
@@ -72,9 +79,9 @@ th{font-size:16px;color:var(--mut)}td.n,th.n{text-align:right;white-space:nowrap
 </nav>
 <h1>Presenze stage</h1>
 <p class="sub" id="chi"></p>
-<div id="viewer" hidden><label for="v-all">Allievo</label><select id="v-all"></select></div>
+<div id="viewer" hidden><label for="v-all" style="color:white;text-shadow:1px 1px 4px rgba(0,0,0,0.9)">Allievo</label><select id="v-all"></select></div>
 <div class="warn" id="prova" hidden><b>MODO PROVA.</b> Quello che scrivi resta solo su questo computer. Non va nelle presenze vere.</div>
-<p><span class="badge view" id="modo">Solo lettura</span> <span class="small" id="stato">Caricamento...</span></p>
+<p class="top-status"><span class="badge view" id="modo">Solo lettura</span> <span class="small" id="stato">Caricamento...</span></p>
 
 <section id="s-riep"><h2>Riepilogo</h2>
 <div class="cards">
@@ -121,8 +128,8 @@ th{font-size:16px;color:var(--mut)}td.n,th.n{text-align:right;white-space:nowrap
 <div id="cal"></div></section>
 <section id="s-doc" hidden><h2>Docente</h2><p class="small">Hai fatto l'accesso come docente. Puoi cambiare i giorni di questo allievo.</p>
 <div class="actions"><button class="btn ko" id="b-reset" type="button">Azzera la password di questo allievo</button></div></section>
-<p class="small"><button class="btn sec" id="b-docente" type="button" style="min-height:44px;font-size:16px">Sono il docente</button></p>
-<p class="small">Questa pagina è pubblica. Non scrivere password, nome dell'azienda, nomi o foto di altre persone, motivi delle assenze.</p>
+<p class="small" style="text-align:center"><button class="btn sec" id="b-docente" type="button" style="min-height:44px;font-size:15px">Sono il docente</button></p>
+<p class="small footer-note">Questa pagina è pubblica. Non scrivere password, nome dell'azienda, nomi o foto di altre persone, motivi delle assenze.</p>
 </main>
 <div id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="sh-tit"><div class="in">
 <h2 id="sh-tit"></h2>
